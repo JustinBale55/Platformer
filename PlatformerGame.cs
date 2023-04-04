@@ -9,6 +9,10 @@ namespace PlatformerGame
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
+        Transform playerTransform;
+        Texture2D playerTexture;
+        GameObject player;
+
         public PlatformerGame()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -24,6 +28,9 @@ namespace PlatformerGame
             _graphics.PreferredBackBufferWidth = 1080;
             _graphics.PreferredBackBufferHeight = 720;
             _graphics.ApplyChanges();
+
+            playerTransform = new Transform(new Vector2(128, 128), 0, 1f);
+            player = new GameObject(this, playerTransform, playerTexture);
         }
 
         protected override void LoadContent()
@@ -31,6 +38,7 @@ namespace PlatformerGame
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+            playerTexture = Content.Load<Texture2D>("tile_0040");
         }
 
         protected override void Update(GameTime gameTime)

@@ -20,10 +20,16 @@ namespace PlatformerGame
             }
         }
 
-        public GameObject(Game game) : base(game)
+        public GameObject(Game game, Transform transform, Texture2D texture2D) : base(game)
         {
             // Add more to the constructor.
+            if (spriteBatch == null)
+            {
+                spriteBatch = new SpriteBatch(Game.GraphicsDevice);
+            }
             game.Components.Add(this); // This allows the game to call Update and Draw automatically.
+            this.transform = transform;
+            this.texture = texture2D;
         }
 
         public void Start(Vector2 startPosition)
@@ -46,6 +52,7 @@ namespace PlatformerGame
         {
             spriteBatch.Begin(samplerState: SamplerState.PointClamp);
             //spriteBatch.Draw(texture, transform._position, texture.Bounds, Color.White, transform._rotation, texture.Bounds.Center.ToVector2(), transform._scale, SpriteEffects.None, 0);
+            spriteBatch.Draw(texture, transform._position, texture.Bounds, Color.White, transform._rotation, texture.Bounds.Center.ToVector2(), 5, SpriteEffects.None, 0);
             spriteBatch.End();
             base.Draw(gameTime);
         }

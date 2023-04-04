@@ -45,7 +45,7 @@ namespace PlatformerGame
         {
             // After intializing your transform, use transform.MovePosition() to move.
             base.Update(gameTime);
-            transform.MovePosition(new Vector2(1, 0));
+            transform.MovePosition(new Vector2(1, 1));
         }
 
         // This will be run by the game automatically if "Visible" is true;
